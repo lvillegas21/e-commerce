@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+
+import NavBar from "./components/NavBar/NavBar";
+
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+
+const style ={
+    style1:{
+        display: 'flex',
+        justifyContent: 'center',
+        padding:'0px 100px ',
+        margin:"10px",
+    },
+    style2:{
+        backgroundColor:"lightgreen"
+    },
+    style3:{
+        backgroundColor:"lightgoldenrodyellow"
+    }
+
+}
+
+class App extends React.Component {
+    render() {
+        return ( <div className='div'style={style.style3} >
+            <div style={style.style2} >
+            <NavBar />
+            </div>
+            <div style={style.style1}>
+            <ItemListContainer
+                    
+                    producto="PRODUCTO"
+                    
+            />            
+            </div>
+            </div>
+            
+
+        );
+    }
 }
 
 export default App;
