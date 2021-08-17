@@ -1,4 +1,5 @@
 import React from 'react'
+import ItemCount from '../ItemCount/ItemCount';
 
 const style = {    
     cont:{
@@ -7,16 +8,37 @@ const style = {
         padding: "3px",
         margin: "10px 0px",
         borderStyle:"solid",
-        borderRadius:"2%"
-    },
+        borderRadius:"2%",
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center'
+    }
+
 }
 
 const ItemListContainer =({producto})=>{
+    let stock=9
+    let items=1
+    function agregar(items) {
+        items>stock
+        ? alert("no hay stock")
+        : alert("añadido")
+        }
+
+
     return(
         <div>
             <div style={style.cont}>
                 <h4>{producto}</h4>
+                <div ><ItemCount 
+                    stock={stock}
+                    initial={items}
+                    onAdd={agregar}    
+                    />
+                </div>
             </div>
+            
         </div>
     )
 }

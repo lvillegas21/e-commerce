@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
+
 const style ={
     style1:{
         display: 'flex',
