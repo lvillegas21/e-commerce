@@ -17,24 +17,14 @@ const style = {
 
 }
 
-const ItemListContainer =({producto})=>{
-    let stock=9
-    let items=1
-    function agregar(items) {
-        items>stock
-        ? alert("no hay stock")
-        : alert("añadido")
-        }
-
-
+const ItemListContainer =({producto})=>{    
     return(
         <div>
             <div style={style.cont}>
                 <h4>{producto}</h4>
                 <div ><ItemCount 
-                    stock={stock}
-                    initial={items}
-                    onAdd={agregar}    
+                    stock={9}
+                    initial={1}    
                     />
                 </div>
             </div>
