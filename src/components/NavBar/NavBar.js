@@ -1,5 +1,7 @@
 import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
+import { Link } from "react-router-dom";
+import './NavBar.css'
 
 const estilo = {
     contenedor:{
@@ -10,25 +12,29 @@ const estilo = {
 }
 const NavBar = () => {
 
-        return ( <div style={estilo.contenedor}>               
-                    <ul className="nav justify-content-center">
-                        <li className="nav-item">
-                            <p className="nav-link active">Home</p>
-                        </li>
-                        <li className="nav-item">
-                            <p className="nav-link">Productos</p>
-                        </li>
-                        <li className="nav-item">
-                        <CartWidget/>
-                        </li>
-                        <li className="nav-item">
-                            <p className="nav-link">Ofertas</p>
-                        </li>
-                        <li className="nav-item">
-                            <p className="nav-link">Contacto</p>
-                        </li>
+        return ( <nav style={estilo.contenedor}>               
+                    <ul className="nav justify-content-center">       
+                        <Link className="nav-item" to="/category/men's clothing">
+                            <p className="nav-link active">Hombre</p>
+                        </Link>
+                
+                        <Link className="nav-item" to="/category/women's clothing">
+                            <p className="nav-link active">Mujer</p>
+                        </Link>
+                       
+                        <Link className="nav-item" to='/'>
+                            <CartWidget/>
+                        </Link>
+
+                        <Link className="nav-item" to='/category/jewelery'>
+                            <p className="nav-link active">Accesorios</p>
+                        </Link>
+
+                        <Link className="nav-item" to='/category/electronics'>
+                            <p className="nav-link active">Tecnología</p>
+                        </Link>
                     </ul>
-                </div>
+                </nav>
         )
     }
 

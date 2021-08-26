@@ -1,41 +1,38 @@
 import './App.css';
 import React from "react";
+
+
+import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
+
 import NavBar from "./components/NavBar/NavBar";
+
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContanier from './components/ItemDetailContainer/ItemDetailContainer'
 
 const style ={
-    style1:{
-        display: 'flex',
-        justifyContent: 'center',
-        padding:'0px 100px ',
-        margin:"10px",
-        flexDirection:'column',
-        alignItems:'center'
-    },
     style2:{
         backgroundColor:"lightgreen"
     },
-    style3:{
-        backgroundColor:"lightgoldenrodyellow"
-    }
 }
 
-const App=()=> {
-   
-        return ( <div className='div'style={style.style3} >
+const App=()=> {  
+        return ( 
+            <Router>
             <div style={style.style2} >
-            <NavBar />
+                <NavBar />
             </div>
-            <div style={style.style1}>
-            <ItemListContainer />   
-            <ItemDetailContanier/>         
+            <div className='div' >        
+            <Switch>
+                <Route path='/' exact component={ItemListContainer}/>
+                <Route path='/item/:id' component={ItemDetailContainer}/>
+                <Route path='/category/:categoryId' component={ItemListContainer}/>
+            </Switch>
             </div>
-            </div>
+            </Router>
             
 
-        );
-    
+        );  
 }
 
 export default App;
