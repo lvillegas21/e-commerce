@@ -1,16 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount';
+import {Link} from 'react-router-dom'
+
 
 const ItemDetail =({data})=>{
 
+    const[productos,setProductos]=useState(0)
     
     let stock = 9;
     function Añadir(items) {
 	items > stock
 		? alert("no tenemos stock suficiente")
-		: alert("Añadido al carrito");
+		: alert(items + " productos añadidos al carrito");
+        setProductos(items)
     }
+
+    console.log(productos)
 
     return(  
     <div className='card'>
@@ -18,12 +24,15 @@ const ItemDetail =({data})=>{
         <h4>{data.title}</h4>
         <p>{data.description}</p>
         <p>${data.price}</p>
-        <ItemCount 
-                    stock={stock}
-                    initial={1} 
-                    onAdd={Añadir}  
-                    producto="Zapatillas" 
-            /> 
+        {productos > 0 ?(<Link to={`/cart`}>
+            <button className="btn btn-warning" >Terminar compra</button>
+        </Link>):           
+            <ItemCount 
+            stock={stock}
+            initial={1} 
+            onAdd={Añadir}   
+         /> 
+           }
     </div>
     )
 }

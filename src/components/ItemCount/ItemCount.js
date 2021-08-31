@@ -1,15 +1,15 @@
 import React from 'react'
 
-const ItemCount = ({initial,stock, onAdd, producto}) =>{
+const ItemCount = ({initial,stock, onAdd}) =>{
     
 const [items, setItems] = React.useState(initial);
 
 const sumar = () => {
   if (items <9){
     setItems(items + 1);
-    alert("añadido al carrito")
+  
   }else{
-      alert("no hay stock")
+      
       return false
   }  
   };
@@ -17,7 +17,7 @@ const sumar = () => {
   const restar = () => {
     if(items>1){
       setItems(items - 1);
-      alert("quitado del carrito")
+      
     }else{
       return false
     }
