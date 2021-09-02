@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from 'react-router-dom'
+import { useCartContext } from '../CartContext/CartContext';
 
 
 const ItemDetail =({data})=>{
@@ -14,7 +15,11 @@ const ItemDetail =({data})=>{
 		? alert("no tenemos stock suficiente")
 		: alert(items + " productos añadidos al carrito");
         setProductos(items)
+        addToCart(data,items)
     }
+
+    const {addToCart}=useCartContext()
+
 
     console.log(productos)
 

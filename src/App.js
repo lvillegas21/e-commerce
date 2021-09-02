@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
 import NavBar from "./components/NavBar/NavBar";
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import { CartProvider} from './components/CartContext/CartContext';
 
 const style ={
     style2:{
@@ -14,6 +15,7 @@ const style ={
 
 const App=()=> {  
         return ( 
+            <CartProvider>
             <Router>
             <div style={style.style2} >
                 <NavBar />
@@ -26,8 +28,7 @@ const App=()=> {
             </Switch>
             </div>
             </Router>
-            
-
+            </CartProvider>
         );  
 }
 
