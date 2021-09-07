@@ -33,6 +33,9 @@ const NavBar = () => {
                         <Link className="nav-item" to='/category/electronics'>
                             <p className="nav-link active">Tecnología</p>
                         </Link>
+                        <Link className="nav-item" to='/cart'>
+                            <p className="nav-link active">Cart</p>
+                        </Link>
                     </ul>
                 </nav>
         )
