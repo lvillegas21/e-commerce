@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
-import { useCartContext } from '../CartContext/CartContext';
+import React from 'react';
+import { useCartContext } from '../../CartContext';
 import { Link } from 'react-router-dom';
 
-
 const Cart=()=>{
-    const{cart}=useCartContext()
-    
-    const[item]=useState(cart)
-    console.log(item)
-    const{removeItem}=useCartContext()
-    const{clear}=useCartContext()
+    const{cart, removeItem, clear}=useCartContext()
 
+    const total= cart.reduce((acc,item)=>{
+        return acc + item.price * item.quantity
+    },0)
+    
     return(
         <div>
-            {item.map((data)=>{
+            {cart.length === 0 ? <div><p>No hay productos en el carrito</p><Link to='/'><button className='btn btn-primary'>ver catalogo</button></Link></div>
+            :cart.map((data)=>{
                 return(
-                    <div>
+                    <div key={data.id}>
                         <ul>
                             <li>
                                 {data.title} | 
                                 ${data.price} |  
                                 x{data.quantity} <button className='btn btn-danger' onClick={()=>removeItem(data.id)}>X</button>
                             </li>
-                        </ul>
-                        <button className='btn btn-danger' onClick={()=>clear(cart)} >Vaciar cart</button>
+                        </ul>  
                     </div>
                 )
             })}
-            {item == 0 && <div><p>No hay productos en el carrito</p><Link to='/'><button className='btn btn-primary'>ver catalogo</button></Link></div>}
-            
+            <button className='btn btn-danger' onClick={()=>clear(cart)} >Vaciar cart</button>
+            <h4>Precio final:${total}</h4>
         </div>
     )
 }

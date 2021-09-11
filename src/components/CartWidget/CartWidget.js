@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
-import { useCartContext } from '../CartContext/CartContext'
+import { useCartContext } from '../../CartContext';
 
 const estilo = {
     contenedor:{
@@ -20,18 +20,16 @@ const estilo = {
     }
 }
 
-
-
 const CartWidget =()=>{
     const {cart}=useCartContext()
-    const [items]=useState(cart)
-    console.log(items)
 
+    const items= cart.reduce((acc,item)=>{
+        return acc + item.quantity
+    },0)
 
     return(
         <div style={estilo.contenedor}>
-            {items.length > 0 ? <div><FontAwesomeIcon icon={faShoppingCart} style={estilo.style1}/>
-            <p>{items.length}</p></div>:<FontAwesomeIcon icon={faShoppingCart} style={estilo.style2}/>}
+            <FontAwesomeIcon icon={faShoppingCart} style={estilo.style1}/><p>{items}</p>
         </div>
     );
 }
