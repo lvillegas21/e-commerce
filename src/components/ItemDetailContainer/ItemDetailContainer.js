@@ -1,28 +1,24 @@
 import React, {useState, useEffect}from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import { collection,query, getDocs } from 'firebase/firestore';
 import { db } from '../ItemCollection/ItemCollection';
 
-
-const ItemDetailContainer =({ match })=>{
-    console.log('match',match)
-
-    const [items,setItems]=useState([])
-    const getItems= async()=>{
-        const docs=[]
-        
-        const q=query(collection(db,"zapatillaz"))
-        
-        const querySnapShot= await getDocs(q)
-        
-        querySnapShot.forEach((item)=>{
-            docs.push({ ...item.data(),id: item.id})
-        })
-        setItems(docs)
-    }
+const ItemDetailContainer =({match})=>{
+    console.log(match)
+    const [items,setItems]=useState()
 
     useEffect(()=>{
-        getItems()
+        
+        const ItemCollection=db.collection('zapatillaz')
+        const item=ItemCollection.doc()
+       
+        item.get().then((doc)=>{
+            if(!doc.exists){
+                console.log('no funciona')
+                return
+            }
+            console.log('funciona')
+            setItems({id:doc.id,...doc.data()})
+        })       
     },[])
   
     return(
