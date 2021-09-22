@@ -8,12 +8,12 @@ const ItemListContainer =()=>{
     const{categoryId}=useParams()
 
     useEffect(()=>{
-        const getItems= async()=>{
+        const getItems=()=>{
             db.collection('zapatillaz')  
-              .onSnapshot((querySnapShot)=>{
+              .onSnapshot((e)=>{
                 const docs=[]
-                querySnapShot.forEach((doc)=>{
-                    docs.push({...doc.data(),id:doc.id})
+                e.forEach((producto)=>{
+                    docs.push({...producto.data(),id:producto.id})
                 })
                 categoryId ?setItems(docs.filter((x)=>x.category===categoryId))
                 :setItems(docs)
