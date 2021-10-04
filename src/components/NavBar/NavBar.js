@@ -10,6 +10,9 @@ const estilo = {
 		alignItems: 'center',
         justifyContent: 'space-around',
     },
+    link:{
+        fontSize:"30px"
+    }
 }
 const NavBar = () => {
          const {cart}=useCartContext()
@@ -32,11 +35,7 @@ const NavBar = () => {
                             <p className="nav-link active">adidas</p>
                         </Link>
 
-                        <Link className="nav-item" to='/cart'>
-                            <p className="nav-link active">Cart</p>
-                        </Link>
-
-                        {cart.length >0 ?<Link className="nav-item" to='/'>
+                        {cart.length >0 ?<Link className="nav-item" to='/cart'>
                             <CartWidget/>
                         </Link>:<li></li>}
                         

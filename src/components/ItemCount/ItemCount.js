@@ -28,14 +28,16 @@ const sumar = () => {
         width:"165px",
         display: 'flex',
         justifyContent: 'center',
-        flexDirection:"column"
+        flexDirection:"column",
+        marginLeft:'100px'
     },
     style2:{
       display: 'flex',
       justifyContent: 'center',
       flexDirection:"row",
       width:"155px",
-      alignItems:'center'
+      alignItems:'center',
+      margin:'3px'
     }
   }
 
@@ -43,7 +45,6 @@ const sumar = () => {
     <div style={style.style1}>
     
     <div style={style.style2}>
-    <p>stock:{stock}</p>
     </div>
 
     

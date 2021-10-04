@@ -3,6 +3,9 @@ import { useCartContext } from '../../CartContext';
 import { Link } from 'react-router-dom';
 import { db } from '../ItemCollection/ItemCollection';
 import firebase from 'firebase/app';
+import { Item } from 'semantic-ui-react'
+import './Cart.css'
+import swal from 'sweetalert';
 
 
 const Cart=()=>{
@@ -32,7 +35,12 @@ const Cart=()=>{
         await db.collection('compras').doc().set(compra)
         db.collection('compras').onSnapshot((e) => {
 			e.forEach((itemCompra) => {
-				alert(itemCompra.id);
+                swal({
+                    title: "Gracias por tu compra!",
+                    text: "El id de tu compra es: "+ itemCompra.id,
+                    icon: "success",
+                    button: "OK",
+                  }); 
 			});
 		});
         clear();
@@ -42,46 +50,63 @@ const Cart=()=>{
     }
     
     return(
-        <div>
-            {cart.length === 0 ? <div><p>No hay productos en el carrito</p><Link to='/'><button className='btn btn-primary'>ver catalogo</button></Link></div>
-            :cart.map((data)=>{
+        <div className='div'>
+            <h2 className='titCart'> TUS COMPRAS</h2>
+            {cart.length> 0 &&cart.map((data)=>{
                 return(
-                    <div key={data.id}>
-                        <ul>
-                            <li>
-                                {data.title} | 
-                                ${data.price} |  
-                                x{data.quantity} <button className='btn btn-danger' onClick={()=>removeItem(data.id)}>X</button>
-                            </li>
-                        </ul>  
+                    <div key={data.id} className='div'>
+                        <Item.Group>
+                            <Item>
+                            <Item.Image size='small' src={data.image} />
+                            <Item.Content>
+                                <Item.Header><h3 className='h3'>{data.title}</h3></Item.Header>
+                                <Item.Meta>
+                                    <h4 className='datoCart'>${data.price}</h4>
+                                    <h4 className='datoCart'>Unidades: {data.quantity}</h4>
+                                    <button className='btn btn-danger' onClick={()=>{removeItem(data.id)}}> X</button>
+                                </Item.Meta>
+                            </Item.Content>
+                            </Item>
+                        </Item.Group> 
                     </div>
                 )
             })}
-            <button className='btn btn-danger' onClick={()=>clear(cart)} >Vaciar cart</button>
-            <h4>Precio final:${total}</h4>
-            <div>
-				<form onSubmit={finalizarCompra}>
-					<input 
-                    placeholder='Ingresar nombre' 
-                    type='text'
-                    onChange={(e)=>{setUserName(e.target.value)}}
-                    value={userName}
-                    />
-                    <input 
-                    placeholder='Ingresar teléfono' 
-                    type='text'
-                    onChange={(e)=>{setUserPhone(e.target.value)}}
-                    value={userPhone}
-                    />
-                    <input 
-                    placeholder='Ingresar mail' 
-                    type='text'
-                    onChange={(e)=>{setUserMail(e.target.value)}}
-                    value={userMail}
-                    />
-					<button className='btn btn-success' type='submit'>Comprar</button>
-				</form>
-			</div>
+            {cart.length === 0 ? <Link to='/'><h3 className='h3'>No hay productos!Observa nuestro catálogo si deseas comprar</h3></Link>
+            :<div><form onSubmit={finalizarCompra} >
+            <div className='form-group'>
+            <input 
+            placeholder='Ingresar nombre' 
+            type='text'
+            onChange={(e)=>{setUserName(e.target.value)}}
+            value={userName}
+            className='form-control'
+            />
+            </div>
+            <div className='form-group'>
+            <input 
+            placeholder='Ingresar teléfono' 
+            type='text'
+            onChange={(e)=>{setUserPhone(e.target.value)}}
+            value={userPhone}
+            className='form-control'
+            />
+            
+            <div className='form-group'></div>
+            <input 
+            placeholder='Ingresar mail' 
+            type='text'
+            onChange={(e)=>{setUserMail(e.target.value)}}
+            value={userMail}
+            className='form-control '
+            />
+            </div>
+            <h3>Precio final:${total}</h3>
+            <button className='btn btn-success button' type='submit'>Comprar</button>
+        </form>
+        <button className='btn btn-danger button' onClick={()=>clear(cart)} >Vaciar carrito</button>
+         </div>}
+            
+				
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, {useEffect,useState} from 'react'
 import ItemList from '../ItemList/ItemList';
 import { db } from '../ItemCollection/ItemCollection';
 import { useParams } from 'react-router';
+import { Spinner } from 'react-bootstrap';
 
 const ItemListContainer =()=>{   
     const [items,setItems]=useState([])
@@ -26,8 +27,9 @@ const ItemListContainer =()=>{
 
     return(
         <div>
+          
             <div>      
-                    <ItemList items={items}/>                 
+                    {items.length=== 0? <Spinner animation="border" variant="primary"/>:<ItemList items={items}/>}                
             </div>  
         </div>
     )

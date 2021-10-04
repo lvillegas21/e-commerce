@@ -4,7 +4,28 @@ img{
 }
 
 .tamanoDiv{
-    height: 330px;
-    width: 340px;
-    margin: 10px;
+    height: 435px;
+    margin: 20px;
+}
+
+span{ 
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 20px;
+    font-weight:900px;
+}
+
+.precio{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-weight: 800px;
+    font-size: 18px;
+}
+
+.tit{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.ver{
+    font-family: 'Big Shoulders Stencil Display', cursive;
 }

@@ -1,6 +1,7 @@
 import React, {useState, useEffect}from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { db } from '../ItemCollection/ItemCollection';
+import { Spinner } from 'react-bootstrap';
 
 const ItemDetailContainer =({match})=>{
     console.log(match.params.id)
@@ -25,7 +26,7 @@ const ItemDetailContainer =({match})=>{
   
     return(
         <div>
-            {items && <ItemDetail data={items}/>  }   
+            {items === undefined ? <Spinner animation="border" variant="primary"/> : <ItemDetail data={items}/>}   
         </div>
     )
 }

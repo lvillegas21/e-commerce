@@ -1,20 +1,28 @@
 import React from 'react'
 import './Item.css'
-//import ItemCount from '../ItemCount/ItemCount';
-//import {Link} from 'react-router-dom'
+import { Card, Image } from 'semantic-ui-react'
 
 const Item =({data})=>{
 
     
     return(
-        <div >
-            <div className="tamanoDiv">
-            <img src={data.image} alt={data.title}></img>
-            <h4>{data.title}</h4>
-            <p>${data.price}</p>
-            <button className="btn btn-primary">VER</button>
-            </div>          
+        <div >         
+            <Card className="tamanoDiv">
+                <Image src={data.image} wrapped ui={false} />
+                <Card.Content>
+                <Card.Header><p className='tit'>{data.title}</p></Card.Header>
+                <Card.Meta>
+                    <span className='date'>{data.category}</span>
+                </Card.Meta>
+                <Card.Description className='precio'>
+                ${data.price}
+                </Card.Description>
+                <button className="btn btn-primary ver">VER</button>
+                </Card.Content>
+            </Card>
         </div>
+
+        
     );
 }
 

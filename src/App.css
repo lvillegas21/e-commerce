@@ -38,6 +38,13 @@
 }
 
 div{
-  background-color: lightgoldenrodyellow;
   width: 100%;
+}
+
+.titulo{
+  text-align: center;
+  text-decoration: underline;
+  color: #9B59B6 ;
+  font-family: 'Big Shoulders Stencil Display', cursive;
+  font-size: 60px;
 }

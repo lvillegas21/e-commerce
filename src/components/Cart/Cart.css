@@ -1,0 +1,36 @@
+.div{
+    display: grid;
+	justify-content: center;
+    margin-top: 10px;
+}
+
+.titCart{
+    text-align: center;
+    color: #AF7AC5;
+    text-decoration: underline;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size:38px
+}
+
+.h3{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+.button{
+    margin: 10px;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+.datoCart{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 24px;
+}
+
+.precioFinal{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 28px;
+}
+
+form{
+    margin-top: 10px;
+}

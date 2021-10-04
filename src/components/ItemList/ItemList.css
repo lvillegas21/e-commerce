@@ -1,13 +1,10 @@
 .div2{
-    width: 365px;
-    height: 365px;
     margin: 5px;
-    align-items: center;
-    border: solid black;
 }
 
 .divDos{
     display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	justify-content: center;
+    margin-left: 30px;
 }

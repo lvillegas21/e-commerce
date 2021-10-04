@@ -10,18 +10,23 @@ import { CartProvider} from './CartContext';
 
 const style ={
     style2:{
-        backgroundColor:"lightgreen"
+        backgroundColor:"#AEB6BF"
     },
 }
 
 const App=()=> {  
         return ( 
+            
             <CartProvider>
+                
             <Router>
+            
             <div style={style.style2} >
                 <NavBar />
             </div>
-            <div className='div' >        
+            <h1 className="titulo">SNEAKERZ!</h1>
+            <div className='div' >     
+         
             <Switch>
                 <Route path='/' exact component={ItemListContainer}/>
                 <Route path='/item/:id' component={ItemDetailContainer}/>
@@ -29,6 +34,7 @@ const App=()=> {
                 <Route path='/cart' component={Cart}/>
             </Switch>
             </div>
+            
             </Router>
             </CartProvider>
         );  

@@ -5,14 +5,26 @@
 }
 
 .card{
-    width: 370px;
-    height: 500px;
+    padding: 10px;
+    width: 800px;
     align-items: center;
-    margin-left:40%;
-    margin-top: 30px;
+    margin-top: 70px;
     display: flex;
 }
 
-button{
+.boton{
+    font-family: 'Big Shoulders Stencil Display', cursive;
     margin: 10px;
+    font-size: 30px;
+}
+.h2{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+.h3{
+    font-family: 'Big Shoulders Stencil Display', cursive;  
+}
+
+.h4{
+    font-family: 'Big Shoulders Stencil Display', cursive;   
 }
