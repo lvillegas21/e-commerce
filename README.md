@@ -24,4 +24,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Ver APP
 
-![GIF APP](https://media.giphy.com/media/Bfwg7x5jPOkrOwAm7R/source.gif)
+![GIF APP](https://media.giphy.com/media/Bfwg7x5jPOkrOwAm7R/giphy.gif)
