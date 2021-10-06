@@ -1,0 +1,18 @@
+p{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 18px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+.link{
+    text-decoration: none;
+    margin: 10px;
+}
+
+.widget{
+    display: flex;
+    justify-content: space-around;
+    width: 38px;
+}

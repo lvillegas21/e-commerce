@@ -1,59 +1,39 @@
 import React from 'react'
+import './ItemCount.css'
 
 const ItemCount = ({initial,stock, onAdd}) =>{
     
-const [items, setItems] = React.useState(initial);
+  const [items, setItems] = React.useState(initial);
 
-const sumar = () => {
-  if (items <9){
-    setItems(items + 1);
-  
-  }else{
-      
-      return false
-  }  
-  };
+  const sumar = () => {
+      if (items <9){
+        setItems(items + 1);
+      }else{
+          return false
+      }  
+    };
 
   const restar = () => {
-    if(items>1){
-      setItems(items - 1);
-      
-    }else{
-      return false
-    }
-  };
-
-  const style ={
-    style1:{
-        width:"165px",
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection:"column",
-        marginLeft:'100px'
-    },
-    style2:{
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection:"row",
-      width:"155px",
-      alignItems:'center',
-      margin:'3px'
-    }
-  }
+      if(items>1){
+        setItems(items - 1);
+      }else{
+        return false
+      }
+    };
 
   return(
-    <div style={style.style1}>
-    
-    <div style={style.style2}>
-    </div>
-
-    
-    <div style={style.style2}>
-    <p><button onClick={sumar} className="btn btn-success">+</button> {items} <button onClick={restar} className="btn btn-danger">-</button></p>
-    </div>
-    <div style={style.style2}>
-    <button className="btn btn-primary" onClick={()=> onAdd(items)}>Comprar</button>
-    </div>
+    <div className='contenedor'>
+      <div className='botones'>
+        
+          <button onClick={sumar} className="btn btn-success margenes">+</button> 
+            <p>{items}</p>
+          <button onClick={restar} className="btn btn-danger margenes">-</button>
+        
+      </div>
+      <div className='botones'>
+        <button className="btn btn-primary" onClick={()=> onAdd(items)}>Comprar</button>
+      </div>
     </div>)
 }
-  export default ItemCount
+  
+export default ItemCount

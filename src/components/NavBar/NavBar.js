@@ -2,48 +2,41 @@ import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link } from "react-router-dom";
 import './NavBar.css'
+//CONTEXT
 import { useCartContext } from '../../CartContext'
 
-const estilo = {
-    contenedor:{
-        display: 'flex',
-		alignItems: 'center',
-        justifyContent: 'space-around',
-    },
-    link:{
-        fontSize:"30px"
-    }
-}
 const NavBar = () => {
-         const {cart}=useCartContext()
+    const {cart}=useCartContext()
 
-        return ( <nav style={estilo.contenedor}>               
-                    <ul className="nav justify-content-center">       
-                        <Link className="nav-item" to="/">
-                            <p className="nav-link active">Home</p>
-                        </Link>
+    const items= cart.reduce((acc,item)=>{
+        return acc + item.quantity
+    },0)
 
-                        <Link className="nav-item" to="/category/puma">
-                            <p className="nav-link active">puma</p>
-                        </Link>
+    return (
+        <nav>               
+            <ul className="nav justify-content-center">       
+                <Link className="nav-item link" to="/">
+                    <p>Home</p>
+                </Link>
+                <Link className="nav-item link" to="/category/puma">
+                    <p>puma</p>
+                </Link>    
+                <Link className="nav-item link" to="/category/nike">
+                   <p>nike</p>
+                </Link>
+                <Link className="nav-item link" to='/category/adidas'>
+                    <p>adidas</p>
+                </Link>
+                <Link className="nav-item link" to='/cart'>
+                    {cart.length > 0 
+                        ? <div className='widget'><CartWidget/><p>{items}</p></div>
+                        : <CartWidget/>
+                    }
+               </Link>
                 
-                        <Link className="nav-item" to="/category/nike">
-                            <p className="nav-link active">nike</p>
-                        </Link>
-
-                        <Link className="nav-item" to='/category/adidas'>
-                            <p className="nav-link active">adidas</p>
-                        </Link>
-
-                        {cart.length >0 ?<Link className="nav-item" to='/cart'>
-                            <CartWidget/>
-                        </Link>:<li></li>}
-                        
-                        
-                    </ul>
-                </nav>
-        )
-    }
-
+            </ul>
+        </nav>
+    )
+}
 
 export default NavBar;

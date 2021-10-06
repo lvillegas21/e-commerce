@@ -1,10 +1,13 @@
 import React, {useEffect,useState} from 'react'
 import ItemList from '../ItemList/ItemList';
-import { db } from '../ItemCollection/ItemCollection';
-import { useParams } from 'react-router';
 import { Spinner } from 'react-bootstrap';
+//REACT-ROUTER-DOM
+import { useParams } from 'react-router';
+//FIREBAE
+import { db } from '../../Firebase/Firebase'
 
 const ItemListContainer =()=>{   
+    
     const [items,setItems]=useState([])
     const{categoryId}=useParams()
 
@@ -16,20 +19,20 @@ const ItemListContainer =()=>{
                 e.forEach((producto)=>{
                     docs.push({...producto.data(),id:producto.id})
                 })
-                categoryId ?setItems(docs.filter((x)=>x.category===categoryId))
-                :setItems(docs)
+                categoryId 
+                    ?setItems(docs.filter((x)=>x.category===categoryId))
+                    :setItems(docs)
             })        
         }
         getItems()
     },[categoryId])
 
-    console.log(items)
-
     return(
         <div>
-          
             <div>      
-                    {items.length=== 0? <Spinner animation="border" variant="primary"/>:<ItemList items={items}/>}                
+                {items.length=== 0
+                    ? <Spinner animation="border" variant="primary" />
+                    :<ItemList items={items}/>}                
             </div>  
         </div>
     )

@@ -6,14 +6,15 @@ import './ItemList.css'
 const ItemList = (props)=>{    
     
     return(
-        <div className="container-fluid">
+        <div>
             <div className="divDos"> 
                 {props.items.map((product) => {
-				return ( <div key={product.id} className="div2">
-                           <Link to={`/item/${product.id}`}>
-                                <Item  data={product} />
-                            </Link>
-			            </div>)
+                return ( 
+                    <div key={product.id} className="div2">
+                        <Link to={`/item/${product.id}`}>
+                            <Item  data={product} />
+                        </Link>
+			        </div>)
                 })}
             </div>
         </div>

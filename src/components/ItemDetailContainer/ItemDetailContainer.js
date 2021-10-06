@@ -1,15 +1,15 @@
 import React, {useState, useEffect}from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import { db } from '../ItemCollection/ItemCollection';
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap'
+//FIREBASE
+import { db } from '../../Firebase/Firebase'
 
 const ItemDetailContainer =({match})=>{
-    console.log(match.params.id)
+    
     const [items,setItems]=useState()
     
-
-
     useEffect(()=>{
+        
         const ItemCollection=db.collection('zapatillaz')
         const item=ItemCollection.doc(match.params.id)
         
@@ -19,14 +19,15 @@ const ItemDetailContainer =({match})=>{
                 console.log('no funciona')
                 return
             }
-            console.log('funciona')
             setItems({id:doc.id,...doc.data()})
         })       
     },[match])
   
     return(
         <div>
-            {items === undefined ? <Spinner animation="border" variant="primary"/> : <ItemDetail data={items}/>}   
+            {items === undefined 
+                ? <Spinner animation="border" variant="primary" />
+                : <ItemDetail data={items}/>}   
         </div>
     )
 }
