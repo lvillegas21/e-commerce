@@ -96,7 +96,7 @@ const Cart=()=>{
                     <div className='form-group'>
                         <input 
                             placeholder='Ingresar teléfono' 
-                            type='text'
+                            type='number'
                             onChange={(e)=>{setUserPhone(e.target.value)}}
                             value={userPhone}
                             className='form-control'
@@ -105,7 +105,7 @@ const Cart=()=>{
                     <div className='form-group'>
                         <input 
                             placeholder='Ingresar mail' 
-                            type='text'
+                            type='email'
                             onChange={(e)=>{setUserMail(e.target.value)}}
                             value={userMail}
                             className='form-control '
